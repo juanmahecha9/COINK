@@ -1,0 +1,70 @@
+<ion-content [fullscreen]="true">
+  <section class="w-100">
+    <div>
+      <app-progress-bar
+        title="FINALIZAR"
+        progress="/assets/icon/progress3.svg"
+        coinkLogo="/assets/icon/OinkPolicia.svg"
+        text="Solo es necesario que leas detenidamente el contrato que se encuentra al final de esta pantalla y lo aceptes."
+        subtitle="ESTAS MUY CERCA DE SER PARTE DE COINK."
+        pSize="14"
+      />
+    </div>
+  </section>
+  <div class="w-100 container">
+    <div class="w-100">
+      <h1>LO MÁS IMPORTANTE</h1>
+      <p>
+        Para la apertura del Depósito de Bajo Monto en COINK debes ser una
+        persona natural que de acuerdo con nuestra legislación vigente te
+        encuentres en plena capacidad para adquirir derechos y contraer
+        obligaciones.
+      </p>
+      <p>
+        Abrirás una cuenta COINK de Bajo Monto la cual te permitirá tener un
+        saldo hasta por 8 salarios mínimos en el mes y realizar débitos por el
+        mismo valor. Si deseas sobrepasar estos límites debes solicitarnos la
+        apertura de un Depósito Ordinario COINK Persona Natural.
+      </p>
+      <p>
+        Solo puedes tener una cuenta COINK de Bajo Monto y podrás utilizar tu
+        dispositivo móvil para consultar tu saldo, tus movimientos, realizar tus
+        transacciones y administrar tu cuenta. Recuerda que no necesitas saldo
+        mínimo ni monto inicial para su apertura.
+      </p>
+    </div>
+    <div class="mt-2">
+      <a>Lee tu contrato</a>
+    </div>
+    <div class="mt-2">
+      <div class="sb-checkbox">
+        <input
+          type="checkbox"
+          class="sb-checkbox__input"
+          id="check1"
+          name="check1"
+          (change)=" acceptTerm() "
+        />
+        <label
+          class="sb-checkbox__label sb-checkbox__label--green"
+          for="check1"
+        ></label>
+      </div>
+      <label for="check1" style="color: #004b40;"
+        >He leído ya acepto el contrato</label
+      >
+    </div>
+    <div class="mt-2 mb-3">
+      <div class="col-sm-12 text-center mt-3">
+        <div style="width: 80% !important; margin: auto !important;">
+          <button
+            (click)="next()"
+            class="btn btn-lg btn-block rounded-pill w-100 btn-dark-green"
+          >
+            ACEPTAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

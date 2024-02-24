@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+  <section class="h-100 w-100">
+    <div class="h-25">
+      <app-progress-bar
+        title="NÚMERO CELULAR"
+        progress="/assets/icon/progress1.svg"
+        coinkLogo="/assets/icon/Oink.svg"
+        text="Para comenzar, por favor ingresa"
+        subtext="tu número de celular."
+      />
+    </div>
+    <div class="h-75 border">
+      <div
+        class="h-25 border container d-flex justify-content-center align-items-center"
+      >
+        <div
+          class="w-85 mx-auto border number-box container d-flex justify-content-center align-items-center"
+        >
+          <p
+            class="text-center number-text"
+            [ngClass]="{'error': phoneNumberError}"
+          >
+            <strong>
+              <span>{{phoneFormat(code)}}</span>
+            </strong>
+          </p>
+        </div>
+      </div>
+      <div class="h-75 border row">
+        @for(button of numberButtons; track button){ @if(button == 0){
+        <div
+          class="col-4 h-25 d-flex align-items-center justify-content-center"
+        >
+          <button class="btn char-keyboard" (click)="deleteDigit()">
+            <img
+              class="button-action-key"
+              src="/assets/icon/delete.svg"
+              alt="Delete digit"
+            />
+          </button>
+        </div>
+        <div
+          class="col-4 h-25 d-flex align-items-center justify-content-center"
+        >
+          <button class="btn char-keyboard" (click)="addDigit(button)">
+            {{button}}
+          </button>
+        </div>
+        <div
+          class="col-4 h-25 d-flex align-items-center justify-content-center"
+        >
+          <button class="btn char-keyboard" (click)="next()">
+            <img
+              class="button-action-key"
+              src="/assets/icon/check.svg"
+              alt="check digit"
+            />
+          </button>
+        </div>
+        }@else{
+        <div
+          class="col-4 h-25 d-flex align-items-center justify-content-center"
+        >
+          <button class="btn char-keyboard" (click)="addDigit(button)">
+            {{button}}
+          </button>
+        </div>
+        } }
+      </div>
+    </div>
+  </section>
+</ion-content>

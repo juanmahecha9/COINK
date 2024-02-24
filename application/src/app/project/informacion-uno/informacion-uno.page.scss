@@ -1,0 +1,54 @@
+.w-85 {
+  width: 85% !important;
+}
+
+.h-35 {
+  height: 35% !important;
+}
+.h-65 {
+  height: 65% !important;
+}
+
+.text {
+  font-size: 16px !important;
+  color: #757575;
+  margin-top: -20px;
+}
+
+.border-green {
+  border-bottom: #1eea00 3px solid;
+}
+
+.data {
+  font-weight: 700;
+  color: #004b40 !important;
+}
+.messages {
+  color: #757575 !important;
+}
+
+ion-icon[name="eye"],
+ion-icon[name="eye-off"] {
+  font-size: 24px;
+  color: #777;
+  cursor: pointer;
+}
+
+h6 {
+  color: #004b40 !important;
+  font-size: 16px !important;
+  font-weight: bold;
+}
+
+.btn-dark-green {
+  background-color: #1eea00 !important;
+  color: #004b40;
+  font-weight: bold;
+}
+
+.pin-error {
+  color: red !important;
+}
+.error {
+  color: red !important;
+}

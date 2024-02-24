@@ -1,0 +1,247 @@
+<ion-content [fullscreen]="true">
+  <section class="w-100 h-100">
+    <div class="h-25" style="height: 25vh !important;">
+      <app-progress-bar
+        title="DATOS DE CUENTA"
+        progress="/assets/icon/progress2.svg"
+        coinkLogo="/assets/icon/Oink-M.svg"
+        text="Ahora necesitamos saber algunos datos tuyosa"
+        subtitle="¿CUÁLES SON TUS DATOS?"
+      />
+    </div>
+    <div class="w-100 border">
+      <form [formGroup]="formGroup" class="container" (submit)="next()">
+        <section>
+          <h6>Documento de identidad</h6>
+          <div class="container">
+            <ion-item class="my-2">
+              <ion-select
+                label-placement="floating"
+                label="Tipo de documento"
+                placeholder="Tipo de documento"
+                interface="popover"
+                formControlName="documentType"
+              >
+                @for(documentType of documentTypes; track documentType.id){
+                <ion-select-option
+                  >{{documentType.description}}</ion-select-option
+                >
+                }
+              </ion-select>
+            </ion-item>
+            @if(formGroup.get('documentType')?.invalid &&
+            formGroup.get('documentType')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+            <ion-item class="my-2">
+              <ion-input
+                label-placement="floating"
+                label="Numero de documento"
+                placeholder="Tipo de documento"
+                formControlName="documentNumber"
+              >
+              </ion-input>
+            </ion-item>
+            @if(formGroup.get('documentNumber')?.invalid &&
+            formGroup.get('documentNumber')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+            <ion-item class="my-2">
+              <ion-input
+                label-placement="floating"
+                label="Fecha de expedición del documento"
+                placeholder="Fecha de expedición del documento"
+                type="date"
+                formControlName="documentExpedition"
+              >
+              </ion-input>
+            </ion-item>
+            @if(formGroup.get('documentExpedition')?.invalid &&
+            formGroup.get('documentExpedition')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+            <ion-item class="my-2">
+              <ion-input
+                label-placement="floating"
+                label="Fecha de nacimiento"
+                placeholder="Fecha de nacimiento"
+                formControlName="dornDate"
+                type="date"
+              >
+              </ion-input>
+            </ion-item>
+            @if(formGroup.get('dornDate')?.invalid &&
+            formGroup.get('dornDate')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+            <ion-item class="my-2">
+              <ion-select
+                label-placement="floating"
+                label="Genero"
+                placeholder="Genero"
+                interface="popover"
+                formControlName="gender"
+              >
+                @for(gender of genders; track gender.notation){
+                <ion-select-option>{{gender.description}}</ion-select-option>
+                }
+              </ion-select>
+            </ion-item>
+            @if(formGroup.get('gender')?.invalid &&
+            formGroup.get('gender')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+          </div>
+        </section>
+        <section>
+          <h6>Configura tu cuenta</h6>
+          <div class="container">
+            <ion-item class="my-2">
+              <ion-input
+                label-placement="floating"
+                label="Correo electrónico"
+                placeholder="Correo electrónico"
+                formControlName="email"
+                type="email"
+              >
+              </ion-input>
+            </ion-item>
+            @if(formGroup.get('email')?.invalid &&
+            formGroup.get('email')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+            <ion-item class="my-2">
+              <ion-input
+                label-placement="floating"
+                label="Confirmar correo electrónico"
+                placeholder="Confirmar correo electrónico"
+                formControlName="confirmEmail"
+                type="email"
+              >
+                <button
+                  ion-button
+                  clear
+                  class="btn"
+                  item-end
+                  style="
+                    height: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <img
+                    [src]="emailCheck"
+                    alt="show"
+                    class="img-fluid"
+                    style="width: 20px !important;"
+                  />
+                </button>
+              </ion-input>
+            </ion-item>
+            @if(formGroup.get('confirmEmail')?.invalid &&
+            formGroup.get('confirmEmail')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+            <ion-item class="my-2">
+              <ion-input
+                label="PIN de seguridad"
+                placeholder="PIN de seguridad"
+                label-placement="floating"
+                [type]="ispassword1"
+                formControlName="pin"
+                maxlength="4"
+                onkeypress="return event.keyCode > 47 && event.keyCode < 58 || event.keyCode == 46"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/(\.\d{2}).+/g, '$1');"
+              ></ion-input>
+              <button
+                ion-button
+                clear
+                class="btn"
+                item-end
+                style="
+                  height: 32px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                (click)="togglePasswordVisibility()"
+              >
+                <img
+                  [src]="passwordIcon1"
+                  alt="show"
+                  class="img-fluid"
+                  style="width: 20px !important;"
+                />
+              </button>
+            </ion-item>
+            @if(formGroup.get('pin')?.invalid && formGroup.get('pin')?.touched){
+            <small class="error"
+              >Campo requerido o con información no valida</small
+            >
+            }
+            <ion-item class="my-2">
+              <ion-input
+                label="Confirmar PIN de seguridad"
+                placeholder="Confirmar PIN de seguridad"
+                label-placement="floating"
+                [type]="ispassword2"
+                formControlName="confirmPin"
+                maxlength="4"
+                onkeypress="return event.keyCode > 47 && event.keyCode < 58 || event.keyCode == 46"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/(\.\d{2}).+/g, '$1');"
+                [ngClass]="{'pin-error': isPinError}"
+              ></ion-input>
+              <button
+                ion-button
+                clear
+                class="btn"
+                item-end
+                style="
+                  height: 32px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                (click)="togglePasswordConfirmVisibility()"
+              >
+                <img
+                  [src]="passwordIcon2"
+                  alt="show"
+                  class="img-fluid"
+                  style="width: 20px !important;"
+                />
+              </button>
+            </ion-item>
+            @if(isPinError){
+            <small class="pin-error">Este campo no coincide con el PIN</small>
+            }
+          </div>
+        </section>
+        <section class="col-md-12 mt-5 mb-5 text-center">
+          <button
+            type="submit"
+            class="btn btn-lg btn-block rounded-pill w-100 btn-dark-green"
+            style="width: 100% !important;"
+          >
+            SIGUIENTE
+          </button>
+        </section>
+      </form>
+    </div>
+  </section>
+</ion-content>

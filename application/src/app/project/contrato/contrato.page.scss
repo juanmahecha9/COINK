@@ -1,0 +1,93 @@
+h1 {
+  color: #004b40;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+a {
+  color: #004b40;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sb-checkbox {
+  margin: 10px;
+}
+
+//color palette: https://www.google.com/design/spec/style/color.html#color-color-palette
+
+//$mapColor parameters
+//class name
+//background-color
+//icon color
+
+$mapColor: ("green", #66bb6a, #fff), ("red", #ef5350, #fff),
+  ("blue", #5c6bc0, #fff), ("orange", #ffa726, #fff);
+
+.sb-checkbox {
+  display: inline-block;
+  font-size: 0;
+  &__input {
+    display: none;
+    &:checked {
+      + .sb-checkbox__label {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__label {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    cursor: pointer;
+    &:before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border: 2px solid;
+      box-sizing: border-box;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 2px;
+    }
+    &:after {
+      content: "";
+      font-family: "Material Icons";
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      width: 16px;
+      height: 16px;
+      display: block;
+      border-radius: 2px;
+      overflow: hidden;
+      text-align: center;
+      opacity: 0;
+      transition: 0.2s opacity;
+    }
+    @each $class, $color1, $color2 in $mapColor {
+      &--#{$class} {
+        &:before {
+          border-color: $color1;
+        }
+        &:after {
+          background-color: $color1;
+          color: $color2;
+        }
+      }
+    }
+  }
+}
+
+.btn-dark-green {
+  background: #1eea00 !important;
+  color: #004b40;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 600 !important;
+}

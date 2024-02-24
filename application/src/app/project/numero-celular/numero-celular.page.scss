@@ -1,0 +1,52 @@
+.char-keyboard {
+  color: #004b40 !important;
+  font-size: 32px;
+  font-weight: 600;
+}
+.w-85 {
+  width: 85% !important;
+}
+
+.number-box {
+  height: 80px !important;
+  border: 1px gray solid !important;
+}
+
+.number-text {
+  font-size: 32px;
+  color: #212121;
+}
+
+.number-text::after {
+  content: " " attr(data-text);
+}
+
+.number-text::after {
+  content: attr(data-text);
+  display: block;
+}
+
+.h-35 {
+  height: 35% !important;
+}
+.h-65 {
+  height: 65% !important;
+}
+
+.text {
+  font-size: 16px !important;
+  color: #757575;
+}
+
+.border-green {
+  border-bottom: #1eea00 3px solid;
+}
+
+.error {
+  color: red !important;
+  font-weight: 600;
+}
+
+.button-action-key {
+  width: 80% !important;
+}
