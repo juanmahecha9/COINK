@@ -16,6 +16,13 @@ import { catchError, finalize } from "rxjs";
 import { DocumentType } from "src/app/shared/models/document-type";
 import { Util } from "src/default/functions/util";
 import { ProgressBarComponent } from "../../tools/progress-bar/progress-bar.component";
+import {
+  IonInput,
+  IonItem,
+  IonSelect,
+  IonContent,
+  IonSelectOption,
+} from "@ionic/angular/standalone";
 
 @Component({
   selector: "app-informacion-uno",
@@ -23,11 +30,15 @@ import { ProgressBarComponent } from "../../tools/progress-bar/progress-bar.comp
   styleUrls: ["./informacion-uno.page.scss"],
   standalone: true,
   imports: [
-    IonicModule,
+    IonInput,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     ProgressBarComponent,
+    IonItem,
+    IonSelect,
+    IonContent,
+    IonSelectOption,
   ],
 })
 export class InformacionUnoPage implements OnInit {

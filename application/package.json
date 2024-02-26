@@ -4,7 +4,12 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "start": "ng.cmd run app:serve --host=localhost --port=4200"
+    "start": "ng.cmd run app:serve --host=localhost --port=4200",
+    "clean": "rimraf www",
+    "cleanAndroid": "rimraf android",
+    "executeAndroid": "ng.cmd run app:build && npm run cleanAndroid && ionic cap add android && npm run androidSync && npm run openAndroid",
+    "openAndroid": "npx cap open android",
+    "androidSync": "npx cap sync android"
   },
   "private": true,
   "dependencies": {
@@ -16,6 +21,7 @@
     "@angular/platform-browser": "^17.0.2",
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
+    "@capacitor/android": "5.7.0",
     "@capacitor/app": "5.0.7",
     "@capacitor/core": "5.7.0",
     "@capacitor/haptics": "5.0.7",
@@ -26,6 +32,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.2",
     "ionicons": "^7.2.1",
+    "rimraf": "^5.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
